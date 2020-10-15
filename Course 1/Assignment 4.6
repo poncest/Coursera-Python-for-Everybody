@@ -1,0 +1,27 @@
+# Steven Ponce 
+# October 2020
+
+#Assignment 4.6
+
+# with user input, calculate pay adjusted by overtime)
+
+def computepay(h,r):
+    return
+    
+# determine the number of hours
+hrs = input("Enter hours: ")
+h = float(hrs)
+   
+# hourly rate
+rate = input("Enter hourly rate: ")
+r = float(rate)
+
+if h <= 40:
+    pay = computepay(h, r)
+    p = (h * r)
+    print('Pay: ','$', p) 
+    
+if h > 40:
+    pay = computepay(h, r)
+    p = (40 * r) + (h - 40) * (r * 1.5)
+    print('Pay: ','$', p) 
