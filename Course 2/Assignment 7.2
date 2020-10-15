@@ -1,0 +1,25 @@
+# Steven Ponce
+# Octorber 2020
+
+# Assignment 7.2
+# Use 'mbox-short.txt' as the file name
+
+while True:
+    try: 
+        fname = input("Enter file name: ")          # user enter file name
+        file = open(fname)
+        break
+    except: 
+        print('File cannot be opened:', fname)      # error message
+   
+count = 0
+total = 0.0
+
+for line in file:
+    if 'X-DSPAM-Confidence: ' in line:          # scan lines for X-DSPAM...
+        count = count + 1
+        value = line.split(':')[1]              # split line at ':' 
+        total = total + float(value)            # calc running total
+        
+average = total / count                         # calc avgerage
+print('Average spam confidence:',average)
