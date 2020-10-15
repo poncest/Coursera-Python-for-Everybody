@@ -1,2 +1,4 @@
-# Python-for-Everybody
-# Coding exercises for Coursera Python for everybody specialization
+This is a GitHub Repository for Coursera Python for Everyone Specialization.
+
+https://www.coursera.org/specializations/python
+
