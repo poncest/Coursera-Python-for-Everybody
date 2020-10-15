@@ -1,0 +1,32 @@
+# Steven Ponce
+# October 2020
+
+# Assignment 5.2
+
+smallest = None
+largest = None
+
+while True: 
+    num = input("Enter a number or type done: ")
+    if num == "done" : 
+        break
+    try:
+       num = float(num)
+
+    except:
+        print('Invalid input')
+        continue
+    
+    if smallest is None or largest is None :
+        smallest = num
+        largest = num
+   
+    elif num < smallest:
+        smallest = num
+    
+    elif num > largest:
+        largest = num
+        
+print("Maximum is", int(largest))
+print("Minimum is", int(smallest))
+
