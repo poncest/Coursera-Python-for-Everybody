@@ -1,0 +1,22 @@
+
+#Assignment 3.2
+
+# with user input, calculate pay adjusted by overtime
+
+# determine the number of hours
+hrs = input("Enter hours: ")
+h = float(hrs)
+   
+# hourly rate
+rate = input("Enter hourly rate: ")
+r = float(rate)
+
+# calculate adjusted pay 
+if h <= 40:
+    pay = (h * r)
+    print("Pay:", pay)
+
+if h > 40:
+    pay = (40 * r) + (h - 40) * (r * 1.5)
+print("Pay:", '$', pay)
+
