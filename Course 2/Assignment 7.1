@@ -1,0 +1,18 @@
+# Steven Ponce
+# October 2020
+
+# Assignment 7.1
+
+fname = input('Enter file name: ')
+
+try:
+    fhand = open(fname)
+      
+except:
+    print('File cannot be opened:', fname)
+    quit()
+    
+r = fhand.read()   # read file
+s = r.strip()      # remove white space
+
+print(s.upper())  # print file in all caps
