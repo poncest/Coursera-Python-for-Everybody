@@ -1,2 +1,2 @@
 # Python-for-Everybody
-Coursera Python for Everybody Specialization
+# Coding exercises for Coursera Python for everybody specialization
