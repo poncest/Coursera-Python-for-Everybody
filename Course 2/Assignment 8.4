@@ -1,0 +1,36 @@
+
+# Assignment 8.4
+# Use the file 'romeo.txt' as input
+
+# Steven Ponce
+# October 2020
+     
+while True:
+    
+    try:
+        fname = input('Enter file name or type done: ')     # user enter file name
+        answer = open(fname)                                # open file
+        break
+        
+    except:
+        if fname.lower().startswith('d'):                   # exit
+            print('goodbye')
+            from sys import exit
+            exit()  
+            
+        elif fname != 'romeo.txt' :                         # try again file name
+            print('File cannot be opened:', fname)
+            
+my_list = list()                                            # create my_list
+
+for line in answer:
+   words = line.split()                                     # slit the words 
+   for word in words :
+       if word not in my_list :
+           my_list.append(word)                             # if not in the list, add the word
+       elif word in my_list :
+           continue
+  
+my_list.sort()
+print(my_list)
+
