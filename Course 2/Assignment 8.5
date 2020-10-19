@@ -1,0 +1,34 @@
+
+# Assignment 8.5
+# Use the file 'mbox-short.txt' as input
+
+# Steven Ponce
+# October 2020
+ 
+while True:
+    
+    try:
+        fname = input('Enter file name or type done: ')     # user enter file name
+        fhand = open(fname)                                 # open file
+        break
+        
+    except:
+        if fname.lower().startswith('d'):                   # exit
+            print('goodbye')
+            from sys import exit
+            exit()  
+            
+        elif fname != 'mbox-short.txt' :                    # try again file name
+            print('File cannot be opened:', fname)
+            
+                                         
+count = 0
+
+for line in fhand:
+    line = line.rstrip()
+    if not line.startswith('From: ') :  continue
+    words = line.split()
+    print(words[1])                                         # return email address
+    count = count + 1
+    
+print('There were", count, "lines in the file with From as the first word')
