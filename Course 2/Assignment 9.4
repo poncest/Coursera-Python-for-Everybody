@@ -1,0 +1,40 @@
+# Assignment 9.4
+# Use the file 'mbox-short.txt' as input
+
+# Steven Ponce
+# October 2020
+
+while True:
+    
+    try:
+        fname = input('Enter file name or type done: ')     # user enter file name
+        if len(fname) < 1 : name = 'mbox-short.txt'         # guardian
+        fhand = open(fname)                                 # open file
+        break
+        
+    except:
+        if fname.lower().startswith('d'):                   # exit
+            print('goodbye')
+            from sys import exit
+            exit()  
+            
+        elif fname != 'mbox-short.txt' :                    # try again file name
+            print('File cannot be opened:', fname)
+                         
+
+counts = dict()                                             # set dictionary
+
+for line in fhand:
+    line = line.rstrip()
+    
+    if not line.startswith('From: ') :  continue
+    words = line.split()
+    
+    for word in words:
+        counts[word] = counts.get(word,0) + 1               # simplified counter with get()
+
+max_sender = words[1]                                       # get email of max sender
+count_emails = counts[word]                                 # return number of emails from max sender
+
+print(max_sender, count_emails)
+        
