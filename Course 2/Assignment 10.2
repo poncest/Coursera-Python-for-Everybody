@@ -1,0 +1,46 @@
+# Assignment 10.2
+# Use the file 'mbox-short.txt' as input
+
+# Steven Ponce
+# October 2020
+
+while True:
+    
+    try:
+        fname = input('Enter file name or type done: ')     # user enter file name
+        if len(fname) < 1 : name = 'mbox-short.txt'         # guardian
+        fhand = open(fname)                                 # open file
+        break
+        
+    except:
+        if fname.lower().startswith('d'):                   # exit
+            print('goodbye')
+            from sys import exit
+            exit()  
+            
+        elif fname != 'mbox-short.txt' :                    # try again file name
+            print('File cannot be opened:', fname)
+
+hours = dict()                                              # set dictionary
+
+for line in fhand: 
+    line.rstrip()
+    
+    if not line.startswith('From ') :  continue
+    words = line.split()                                    # split From lines only
+    
+    hour = words[5].split(':')                              # select hr and split at (:)
+    hours[hour[0]] = hours.get(hour[0], 0) + 1              # hr counter
+
+
+my_list = list()                                            # set list
+
+for key,value in hours.items():                             # key = hour, value = count
+    my_list.append((key, value))                            # append tuple to list
+    
+my_list.sort()                                              # sort list by hour
+for key, value in my_list:                                  # loop through list of tuples
+    print(key,value)                                        # print hour counts and sorts by hour
+ 
+ 
+ 
