@@ -1,0 +1,44 @@
+
+"""
+Week 2 Assignment -  Extracting Data With Regular Expressions
+Use the file 'regex_sum_1016810.txt' as input http://py4e-data.dr-chuck.net/regex_sum_1016810.txt
+
+Steven Ponce / October 2020
+
+Instructions: 
+In this assignment you will read through and parse a file with text and numbers. 
+You will extract all the numbers in the file and compute the sum of the numbers.
+"""
+
+while True:
+    
+    try:
+        fname = input('Enter file name or type done: ')      # user enter file name
+        if len(fname) < 1 : name = 'regex_sum_1016810.txt'   # guardian
+        fhand = open(fname)                                  # open file
+        break
+        
+    except:
+        if fname.lower().startswith('d'):                    # exit
+            print('goodbye')
+            from sys import exit
+            exit()  
+            
+        elif fname != 'regex_sum_1016810.txt' :              # try again file name
+            print('File cannot be opened:', fname)
+
+import re
+
+num = 0
+total = 0
+
+for line in fhand:
+    line = line.rstrip()
+    line = re.findall('[0-9]+', line)                        # [0-9]	returns a match for any digit between 0 and 9
+    if len(line) > 0:
+        for n in line:
+            num += 1
+            total += int(n)
+
+print('The sum for the sample text above is', total)
+
