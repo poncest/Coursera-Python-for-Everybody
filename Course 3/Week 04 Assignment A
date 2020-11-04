@@ -1,0 +1,43 @@
+"""
+Week 4 Assignment A - Scraping Numbers from HTML using BeautifulSoup
+Use url http://py4e-data.dr-chuck.net/comments_1016812.html
+
+Created: November 2020
+@author: Steven Ponce
+
+To run this, download the BeautifulSoup zip file
+http://www.py4e.com/code3/bs4.zip
+and unzip it in the same directory as this file
+"""
+
+# Search for link values within URL
+import urllib.request, urllib.parse, urllib.error
+# import re
+import ssl
+from bs4 import BeautifulSoup
+
+# Ignore SSL certificate errors
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+url = input('Enter - ')
+html = urllib.request.urlopen(url, context=ctx).read()
+soup = BeautifulSoup(html, 'html.parser')
+
+total = 0
+count = 0
+
+# Retrive all anchor tags </span>
+tags = soup('span')
+for tag in tags:
+    value = int(tag.contents[0])
+ 
+# Count and sum all numbers
+    value = int(value)
+    total = total + value
+    count = count + 1
+
+print('Count', count)    
+print('Sum', total)
+
