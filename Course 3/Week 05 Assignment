@@ -1,0 +1,43 @@
+
+"""
+Program: Coursera Python for Everybody Specialization 
+Course #3: Using Python to Access Web Data
+
+Week 5 Assignment - Extracting Data from XML
+
+Created: November 2020
+@author: Steven Ponce
+"""
+
+# Test XML File: http://py4e-data.dr-chuck.net/comments_42.xml
+# Assignment XML File: http://py4e-data.dr-chuck.net/comments_1016814.xml
+
+import urllib.request, urllib.parse, urllib.error
+import xml.etree.ElementTree as et
+import ssl
+
+# Ignore SSL certificate errors
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+    
+file = input('Enter xml file location: ')
+content = urllib.request.urlopen(file).read().decode()
+
+print('Retrieving', file)
+print('Retrived', len(content), 'characters')
+
+# Selecting elements from ElementTree
+data = et.fromstring(content)
+tags = data.findall('comments/coment')
+
+count = 0
+total = 0
+
+for tag in tags:
+    count += 1
+    total += int(tag.find('count').text)
+                
+print('Users Count: ', count)
+print('Sum: ', total)
+
