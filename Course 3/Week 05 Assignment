@@ -29,7 +29,7 @@ print('Retrived', len(content), 'characters')
 
 # Selecting elements from ElementTree
 data = et.fromstring(content)
-tags = data.findall('comments/coment')
+tags = data.findall('comments/comment')
 
 count = 0
 total = 0
