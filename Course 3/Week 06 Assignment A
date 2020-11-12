@@ -1,0 +1,58 @@
+
+"""
+Program: Coursera Python for Everybody Specialization 
+Course #3: Using Python to Access Web Data
+
+Week 06 Assignment A - Extracting Data from JSON
+
+Created: November 2020
+@author: Steven Ponce
+"""
+
+# Test JSON File: http://py4e-data.dr-chuck.net/comments_42.json
+# Assignment JSON File: http://py4e-data.dr-chuck.net/comments_1016815.json
+
+import urllib.request, urllib.parse, urllib.error
+import json
+import ssl
+
+# Ignore SSL certificate errors
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+    
+# User input
+url = input('Enter JSON file location: ')
+print('Retrieving', url)
+
+connection = urllib.request.urlopen(url, context=ctx)
+data = connection.read().decode()
+print('Retrieved', len(data), 'characters')
+
+try:
+    js = json.loads(data)
+except:
+    js = None
+
+count = 0
+total = 0
+
+# Retrieving JSON objects
+for comment in js['comments']:
+    count += 1
+    total += int(comment['count'])        
+    
+print('Users Count: ', count)
+print('Sum: ', total)
+
+
+"""
+Code output:
+
+Enter JSON file location: http://py4e-data.dr-chuck.net/comments_42.json
+Retrieving http://py4e-data.dr-chuck.net/comments_42.json
+Retrieved 2711 characters
+Users Count:  50
+Sum:  2553
+"""
